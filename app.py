@@ -42,13 +42,13 @@ if not GOOGLE_API_KEY:
     st.stop()
 
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
-import google.generativeai as genai
-genai.configure(api_key=GOOGLE_API_KEY)
+# import google.generativeai as genai
+# genai.configure(api_key=GOOGLE_API_KEY)
 
-if st.checkbox("🔍 Debug: list chat models"):
-    for m in genai.list_models():
-        if "generateContent" in m.supported_generation_methods:
-            st.write(m.name)
+# if st.checkbox("🔍 Debug: list chat models"):
+#     for m in genai.list_models():
+#         if "generateContent" in m.supported_generation_methods:
+#             st.write(m.name)
 
 # ---------------------------------------------------------------------------
 # Prompt template - this is what enforces "answer only from the PDF"
@@ -100,7 +100,7 @@ def build_qa_chain(file_bytes: bytes, file_name: str):
         embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
         vectorstore = FAISS.from_documents(chunks, embeddings)
 
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
+        llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
         qa_chain = RetrievalQA.from_chain_type(
             llm=llm,
