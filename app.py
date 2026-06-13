@@ -42,13 +42,13 @@ if not GOOGLE_API_KEY:
     st.stop()
 
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
-# import google.generativeai as genai
-# genai.configure(api_key=GOOGLE_API_KEY)
+import google.generativeai as genai
+genai.configure(api_key=GOOGLE_API_KEY)
 
-# if st.checkbox("🔍 Debug: list available models"):
-#     for m in genai.list_models():
-#         if "embedContent" in m.supported_generation_methods:
-#             st.write(m.name)
+if st.checkbox("🔍 Debug: list chat models"):
+    for m in genai.list_models():
+        if "generateContent" in m.supported_generation_methods:
+            st.write(m.name)
 
 # ---------------------------------------------------------------------------
 # Prompt template - this is what enforces "answer only from the PDF"
