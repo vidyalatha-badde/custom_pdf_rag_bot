@@ -15,7 +15,7 @@ import os
 import tempfile
 import streamlit as st
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
 from langchain.prompts import PromptTemplate
