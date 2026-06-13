@@ -90,7 +90,7 @@ def build_qa_chain(file_bytes: bytes, file_name: str):
         )
         chunks = splitter.split_documents(documents)
 
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
         vectorstore = FAISS.from_documents(chunks, embeddings)
 
         llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
